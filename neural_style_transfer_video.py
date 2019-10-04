@@ -9,6 +9,9 @@ import argparse
 import imutils
 import time
 import cv2
+import print_pictures
+
+
 
 # construct the argument parser and parse the arguments
 ap = argparse.ArgumentParser()
@@ -58,7 +61,6 @@ while True:
 		(103.939, 116.779, 123.680), swapRB=False, crop=False)
 	net.setInput(blob)
 	output = net.forward()
-
 	# reshape the output tensor, add back in the mean subtraction, and
 	# then swap the channel ordering
 	output = output.reshape((3, output.shape[2], output.shape[3]))
@@ -71,7 +73,11 @@ while True:
 	# show the original frame along with the output neural style
 	# transfer
 	cv2.imshow("Input", frame)
+
 	cv2.imshow("Output", output)
+	print_pictures.run(output * 255)
+
+
 	key = cv2.waitKey(1) & 0xFF
 
 	# if the `n` key is pressed (for "next"), load the next neural
@@ -89,3 +95,4 @@ while True:
 # do a bit of cleanup
 cv2.destroyAllWindows()
 vs.stop()
+

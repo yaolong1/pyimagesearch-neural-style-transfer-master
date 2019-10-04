@@ -1,5 +1,5 @@
 # USAGE
-#  python neural_style_transfer_examine.py --models models --image images/giraffe.jpg 
+# python neural_style_transfer_examine.py --models models --image images/giraffe.jpg
 
 # import the necessary packages
 from imutils import paths
